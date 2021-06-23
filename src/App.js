@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 import Overview from "./components/Overview";
 import uniqid from "uniqid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 class App extends Component {
   constructor() {
@@ -61,23 +66,41 @@ class App extends Component {
     const { task, tasks } = this.state;
 
     return (
-      <div>
+      <Container>
+        <Typography
+          variant="h3"
+          component="h2"
+          color="textSecondary"
+          gutterBottom
+        >
+          Create a New Task
+        </Typography>
+
         <form onSubmit={this.addTask}>
-          <label htmlFor="taskInput">Enter task</label>
-          <input
+          <TextField
             onChange={this.handleChange}
             value={task.text}
-            type="text"
-            id="taskInput"
-          />
-          <button type="submit">Add Task</button>
+            label="Task"
+            variant="outlined"
+            color="secondary"
+            fullWidth
+            required
+          ></TextField>
+          <Button
+            type="submit"
+            color="primary"
+            variant="contained"
+            endIcon={<KeyboardArrowRightIcon />}
+          >
+            Add Task
+          </Button>
         </form>
         <Overview
           tasks={tasks}
           deleteTask={this.deleteTask}
           updateTask={this.updateTask}
         />
-      </div>
+      </Container>
     );
   }
 }
