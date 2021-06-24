@@ -7,7 +7,7 @@ const Overview = (props) => {
   const { tasks, deleteTask, updateTask, updateDescription } = props;
 
   const taskList = tasks.map((task) => (
-    <Grid item xs={12} md={6} lg={4}>
+    <Grid item xs={12} md={6} lg={4} key={task.id}>
       <TaskCard
         task={task}
         deleteTask={deleteTask}
@@ -19,7 +19,7 @@ const Overview = (props) => {
 
   return (
     <Container>
-      <Grid container spacing={5}>
+      <Grid container direction="row" spacing={5}>
         {taskList}
       </Grid>
     </Container>
