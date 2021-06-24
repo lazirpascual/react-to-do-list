@@ -1,33 +1,29 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
+import TaskCard from "./TaskCard";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 
 const Overview = (props) => {
-  const { tasks, deleteTask, updateTask } = props;
+  const { tasks, deleteTask, updateTask, updateDescription } = props;
 
   const taskList = tasks.map((task) => (
-    <ul>
-      <TextField
-        value={task.text}
-        onChange={(e) => updateTask(e.target.value, task.id)}
-        key={task.id}
-        type="text"
-        variant="outlined"
-        color="secondary"
-      ></TextField>
-      <Button
-        onClick={() => deleteTask(task.id)}
-        color="secondary"
-        variant="contained"
-        endIcon={<DeleteIcon />}
-      >
-        Delete
-      </Button>
-    </ul>
+    <Grid item xs={12} md={6} lg={4}>
+      <TaskCard
+        task={task}
+        deleteTask={deleteTask}
+        updateTask={updateTask}
+        updateDescription={updateDescription}
+      />
+    </Grid>
   ));
 
-  return <div>{taskList}</div>;
+  return (
+    <Container>
+      <Grid container spacing={5}>
+        {taskList}
+      </Grid>
+    </Container>
+  );
 };
 
 export default Overview;

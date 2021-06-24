@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       task: {
         text: "",
+        description: "",
         id: uniqid(),
       },
       tasks: [],
@@ -23,7 +24,7 @@ class App extends Component {
     this.updateTask = this.updateTask.bind(this);
   }
 
-  handleChange = (e) => {
+  handleChangeTask = (e) => {
     this.setState({
       task: {
         text: e.target.value,
@@ -38,6 +39,7 @@ class App extends Component {
       tasks: this.state.tasks.concat(this.state.task),
       task: {
         text: "",
+        description: "",
         id: uniqid(),
       },
     });
@@ -62,6 +64,18 @@ class App extends Component {
     });
   };
 
+  updateDescription = (text, key) => {
+    const tasks = this.state.tasks;
+    tasks.forEach((item) => {
+      if (item.id === key) {
+        item.description = text;
+      }
+    });
+    this.setState({
+      tasks: tasks,
+    });
+  };
+
   render() {
     const { task, tasks } = this.state;
 
@@ -78,7 +92,7 @@ class App extends Component {
 
         <form onSubmit={this.addTask}>
           <TextField
-            onChange={this.handleChange}
+            onChange={this.handleChangeTask}
             value={task.text}
             label="Task"
             variant="outlined"
@@ -99,6 +113,7 @@ class App extends Component {
           tasks={tasks}
           deleteTask={this.deleteTask}
           updateTask={this.updateTask}
+          updateDescription={this.updateDescription}
         />
       </Container>
     );
