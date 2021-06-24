@@ -6,6 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import Box from "@material-ui/core/Box";
 
 class App extends Component {
   constructor() {
@@ -22,6 +23,7 @@ class App extends Component {
 
     this.deleteTask = this.deleteTask.bind(this);
     this.updateTask = this.updateTask.bind(this);
+    this.updateDescription = this.updateDescription.bind(this);
   }
 
   handleChangeTask = (e) => {
@@ -91,24 +93,29 @@ class App extends Component {
         </Typography>
 
         <form onSubmit={this.addTask}>
-          <TextField
-            onChange={this.handleChangeTask}
-            value={task.text}
-            label="Task"
-            variant="outlined"
-            color="secondary"
-            fullWidth
-            required
-          ></TextField>
-          <Button
-            type="submit"
-            color="primary"
-            variant="contained"
-            endIcon={<KeyboardArrowRightIcon />}
-          >
-            Add Task
-          </Button>
+          <Box mt={4} mb={4}>
+            <TextField
+              onChange={this.handleChangeTask}
+              value={task.text}
+              label="Task"
+              variant="outlined"
+              color="secondary"
+              fullWidth
+              required
+            ></TextField>
+          </Box>
+          <Box mb={6}>
+            <Button
+              type="submit"
+              color="secondary"
+              variant="contained"
+              endIcon={<KeyboardArrowRightIcon />}
+            >
+              Add Task
+            </Button>
+          </Box>
         </form>
+
         <Overview
           tasks={tasks}
           deleteTask={this.deleteTask}
