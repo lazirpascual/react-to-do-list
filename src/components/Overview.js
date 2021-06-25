@@ -19,7 +19,7 @@ const Overview = (props) => {
 
   return (
     <Container>
-      <Grid container direction="row" spacing={5}>
+      <Grid container spacing={5}>
         {taskList}
       </Grid>
     </Container>
