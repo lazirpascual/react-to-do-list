@@ -8,16 +8,18 @@ This is a basic to-do list application created using React and Material-UI
 
 ### Technologies
 
-* React JS
-* Material-UI
+- React JS
+  - Class Components
+  - State and Props
+- Material-UI
 
 ### Tools
 
-* Visual Studio Code
-* Linux terminal
-* Git and GitHub
+- Visual Studio Code
+- Linux terminal
+- Git and GitHub
 
-### What I Learned 
+### What I Learned
 
-This is my first react project where I created a basic to-do list application. I learned react basics of creating a CRUD application using class components, state, and props. 
+This is my first react project where I created a basic to-do list application. I learned react basics of creating a CRUD application using class components, state, and props.
 Additionally, I picked up a UI framework for react called Material-UI which allowed me to efficiently design and format my application.
